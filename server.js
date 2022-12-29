@@ -7,6 +7,7 @@ import userdata from './dbdata.js'
 import uploaddata from './cropsdata.js'
 import mongoose from 'mongoose'
 import orders from './orders.js'
+import aboutcrops from './aboutcrops.js'
 const port=process.env.PORT || 5000;
 const app=express();
 const hostname="0.0.0.0"
@@ -22,6 +23,15 @@ mongoose.connect("mongodb+srv://bhuvan:bhuvan1234@cluster0.1lrhmzk.mongodb.net/?
 })
 app.get('/',(req,res)=>{
     res.send("hello world");
+})
+app.get('/user/aboutcrop',(req,res)=>{
+    aboutcrops.find((err,data)=>{
+        if(!err){
+            res.send(data)
+        }else{
+            res.send(err)
+        }
+    })
 })
 app.get('/user/sync',(req,res)=>{
     userdata.find((err,data)=>{
@@ -39,6 +49,17 @@ app.get('/user/upload',(req,res)=>{
         }else{
             res.send(err)
         }
+    })
+})
+app.post('/user/aboutnew',(req,res)=>{
+    const about=req.body;
+    aboutcrops.create(about,(err,data)=>{
+        if(!err){
+            res.send(data)
+        }else{
+            res.send(err)
+        }
+
     })
 })
 app.post('/user/new',(req,res)=>{
