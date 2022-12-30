@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import Razorpay from 'razorpay'
 import crypto from "crypto"
+import contact from './contact.js'
 
 import userdata from './dbdata.js'
 import uploaddata from './cropsdata.js'
@@ -31,6 +32,26 @@ app.get('/user/aboutcrop',(req,res)=>{
         }else{
             res.send(err)
         }
+    })
+})
+app.get('/user/contact',(req,res)=>{
+    contact.find((err,data)=>{
+        if(!err){
+            res.send(data)
+        }else{
+            res.send(err)
+        }
+    })
+})
+app.post('/user/contactme',(req,res)=>{
+    const about=req.body;
+    contact.create(about,(err,data)=>{
+        if(!err){
+            res.send(data)
+        }else{
+            res.send(err)
+        }
+
     })
 })
 app.get('/user/sync',(req,res)=>{
