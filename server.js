@@ -111,6 +111,14 @@ app.get('/user/:id',(req,res)=>{
         }
      })
 })
+app.get('/crops/:id',(req,res)=>{
+    const id=req.params.id;
+    uploaddata.find({email:id},(err,data)=>{
+        if(!err){
+         res.send(data)
+        }
+     })
+})
 app.post("/orders",async (req,res)=>{
 try{
     const instance =new Razorpay({
