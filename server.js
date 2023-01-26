@@ -11,7 +11,7 @@ import orders from './orders.js'
 import aboutcrops from './aboutcrops.js'
 const port=process.env.PORT || 5000;
 const app=express();
-const hostname="0.0.0.0"
+
 app.use(express.json());
 app.use(cors());
 mongoose.connect("mongodb+srv://bhuvan:bhuvan1234@cluster0.1lrhmzk.mongodb.net/?retryWrites=true&w=majority",{
@@ -207,6 +207,6 @@ app.delete("/deletecrop/:id",(req,res)=>{
 })
 
 
-app.listen(port,hostname,()=>{
+app.listen(port,()=>{
     console.log(`listening at ${port}`);
 })
