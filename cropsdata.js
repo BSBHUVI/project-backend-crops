@@ -8,7 +8,9 @@ const cropdata=mongoose.Schema({
     pic:{
         type:String,
         
-    }
+    },
+    latitude:String,
+    longitude:String
 
 })
 export default mongoose.model("crop",cropdata)

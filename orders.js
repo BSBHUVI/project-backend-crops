@@ -5,7 +5,9 @@ const orders=mongoose.Schema({
     cropid:String,
     pic:String,
     pricing:String,
-    number:String
+    number:String,
+    latitude:String,
+    longitude:String
 
 
 })
