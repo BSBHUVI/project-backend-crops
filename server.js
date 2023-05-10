@@ -204,10 +204,13 @@ app.delete("/deletecrop/:id",(req,res)=>{
     uploaddata.findByIdAndDelete({_id:id},(req,res,err)=>{
         if (!err){
             console.log("deleted")
+           
         }else{
             console.error(err)
+            return
         }
     })
+    res.send("deleted")
 })
 
 
